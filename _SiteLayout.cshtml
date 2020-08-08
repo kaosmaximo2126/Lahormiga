@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title> La Hormiga Uniformes y Bordado</title>
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="~/fonts/style.css" />
+    <link rel="stylesheet" href="~/StyleSheet.css">
+</head>
+<body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <a href="https://api.whatsapp.com/send?phone=2712089881&text=Hola%21%20Quiero%20consultar%20la%20disponibilidad%20de%20un%20articulo." class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
+
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title"><img src="~/Images/Logo_LaHormigaInvertido.png" alt="LOGO" width="213" height="77"</p>
+            </div>
+            <div class="float-right">
+               
+
+                <section id="login">
+                    @if (WebSecurity.IsAuthenticated)
+                    {
+                        <text>
+                            ¡Hola, <a class="email" href="~/Account/Manage" title="Manage">@WebSecurity.CurrentUserName</a>!
+                            <form id="logoutForm" action="~/Account/Logout" method="post">
+                                @AntiForgery.GetHtml()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                            </form>
+                        </text>
+                    }
+                    else
+                    {
+                        <ul></ul>
+                    }
+                </section>
+                <nav>
+                    <ul id="menu">
+                    <li><a href="~/">Inicio</a></li>
+                    <li><a href="~/About">Acerca de</a></li>
+                    <li><a href="~/Contact">Contacto</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer style="padding-top:40px;height: 200px;">
+        <div class="content-wrapper">
+           
+            <div class="float-right">
+
+                <center>
+                    <img src="~/Images/Logo_LaHormiga.png" alt="LOGO" width="213" height="77"</p>
+                    <p>La Hormiga © 2020</p>
+                    <p>Desarrollado por Fermín Cárdenas Cabal.</p>
+                 
+                </center>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
